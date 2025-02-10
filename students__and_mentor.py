@@ -103,6 +103,11 @@ new_cool_reviewer.rate_hw(new_best_student, 'OOP', 8)
 cool_reviewer.rate_hw(best_student, 'Python', 9)
 cool_reviewer.rate_hw(best_student, 'Python', 7)
 
+if best_student.avr() >= best_lecturer.avr():
+    print(f'{best_student.name}, больше чем, {best_lecturer.name}.')
+else:
+    print(f'{best_lecturer.name}, больше чем, {best_student.name}.')
+print()
 print(best_student)
 print(new_best_student)
 print()
