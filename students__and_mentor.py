@@ -9,6 +9,7 @@ class Student:
 
     def add_courses(self, course_name):
             self.finished_courses += [course_name]
+            self.courses_in_progress += [course_name]
 
     def rate_hw(self, lecturer, course, grade):
         if isinstance(lecturer, Lecturer) and course in lecturer.courses_attached and course in self.courses_in_progress:
@@ -87,21 +88,41 @@ new_best_student.finished_courses += ['Введение в программир�
 
 best_lecturer = Lecturer('Some', 'Buddy')
 best_lecturer.courses_attached += ['Git']
+best_lecturer.courses_attached += ['OOP']
 new_best_lecturer = Lecturer('Henry', 'Bond')
 new_best_lecturer.courses_attached += ['OOP']
+new_best_lecturer.courses_attached += ['Git']
 
 cool_reviewer = Reviewer('Some', 'Duddy')
 cool_reviewer.courses_attached += ['Python']
 new_cool_reviewer = Reviewer('Rob', 'Chaky')
 new_cool_reviewer.courses_attached += ['OOP']
 
-new_best_student.rate_hw(best_lecturer, 'Git', 10)
-best_student.rate_hw(new_best_lecturer, 'OOP', 9)
-best_student.rate_hw(best_lecturer, 'Git', 8)
+best_student.rate_hw(best_lecturer, 'OOP', 10)
+best_student.rate_hw(best_lecturer, 'OOP', 9)
+best_student.rate_hw(best_lecturer, 'OOP', 8)
 
-new_cool_reviewer.rate_hw(new_best_student, 'OOP', 8)
+best_student.rate_hw(new_best_lecturer, 'Git', 9)
+best_student.rate_hw(new_best_lecturer, 'Git', 7)
+best_student.rate_hw(new_best_lecturer, 'Git', 8)
+
+new_best_student.rate_hw(new_best_lecturer, 'Git', 8)
+new_best_student.rate_hw(new_best_lecturer, 'Git', 10)
+new_best_student.rate_hw(new_best_lecturer, 'Git', 9)
+
+
+
 cool_reviewer.rate_hw(best_student, 'Python', 9)
 cool_reviewer.rate_hw(best_student, 'Python', 7)
+cool_reviewer.rate_hw(best_student, 'Python', 7)
+
+cool_reviewer.rate_hw(new_best_student, 'Git', 8)
+cool_reviewer.rate_hw(new_best_student, 'Git', 9)
+cool_reviewer.rate_hw(new_best_student, 'Git', 10)
+
+new_cool_reviewer.rate_hw(new_best_student, 'OOP', 8)
+new_cool_reviewer.rate_hw(new_best_student, 'OOP', 9)
+new_cool_reviewer.rate_hw(new_best_student, 'OOP', 8)
 
 if best_student.avr() >= best_lecturer.avr():
     print(f'{best_student.name}, больше чем, {best_lecturer.name}.')
